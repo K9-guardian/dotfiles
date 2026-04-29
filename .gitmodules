@@ -1,0 +1,3 @@
+[submodule "dotfiles-core"]
+	path = dotfiles-core
+	url = https://github.com/K9-guardian/dotfiles-core

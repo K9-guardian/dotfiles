@@ -1,0 +1,10 @@
+- name: Execute core neovim tasks
+  include_role:
+    name: core_neovim
+
+- name: Copy neovim configuration
+  ansible.posix.synchronize:
+    src: "config/"
+    dest: "~/.config/nvim/lua/plugins/"
+    archive: false
+    times: false

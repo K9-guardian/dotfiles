@@ -1,0 +1,20 @@
+- name: Get latest croc information
+  include_tasks: "../../dotfiles-core/tasks/github_release_asset.yml"
+  vars:
+    github_repo: "schollz/croc"
+
+- name: Check if croc needs update
+  include_tasks: "../../dotfiles-core/tasks/check_version.yml"
+  vars:
+    check_binary_path: "{{ croc_install_dir }}/bin/croc"
+    check_version_cmd: "{{ croc_install_dir }}/bin/croc --version"
+    check_desired_version: "{{ _gh_desired_version }}"
+    check_app_name: croc
+
+- name: Install/update croc
+  when:
+    - _needs_update | default(false)
+    - not ansible_check_mode
+  ansible.builtin.shell:
+    cmd: "curl https://getcroc.schollz.com | bash"
+  become: true

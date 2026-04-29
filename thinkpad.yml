@@ -1,0 +1,11 @@
+- hosts: localhost
+  connection: local
+  roles:
+    - common
+    - core_kitty
+    - core_bash
+    - neovim
+    - fzf
+    - atuin
+    - croc
+    - cargo
