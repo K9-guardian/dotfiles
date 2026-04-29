@@ -17,18 +17,19 @@ return function(use)
       commit = "1a31f824b9cd5bc6f342fc29e9a53b60d74af245",
       config = function()
          require("mason-lspconfig").setup {
-            automatic_installation = true,
-            -- TODO: Figure out good extensions for python and typescript
+            automatic_installation = false,
             ensure_installed = {
                "clojure_lsp",
-               "gopls",
+               -- "gopls",
                "hls",
                "jdtls",
                "julials",
                "lua_ls",
+               -- "pyright",
                "rust_analyzer",
                "texlab",
                "tinymist",
+               -- "typescript-language-server",
             }
          }
       end,

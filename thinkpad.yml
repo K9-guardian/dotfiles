@@ -2,10 +2,10 @@
   connection: local
   roles:
     - common
-    - core_kitty
-    - core_bash
+    # - core_kitty
+    # - core_bash
     - neovim
-    - fzf
-    - atuin
-    - croc
-    - cargo
+    # - fzf
+    # - atuin
+    # - croc
+    # - cargo
