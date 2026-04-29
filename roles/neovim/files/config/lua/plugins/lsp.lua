@@ -28,7 +28,7 @@ return function(use)
                "lua_ls",
                "rust_analyzer",
                "texlab",
-               "tinymist"
+               "tinymist",
             }
          }
       end,
