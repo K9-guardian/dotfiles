@@ -3,7 +3,12 @@ return function(use)
    use "wlangstroth/vim-racket"
    use "adimit/prolog.vim"
 
-   use "Olical/conjure"
+   use {
+      "Olical/conjure",
+      config = function()
+         vim.g["conjure#extract#tree_sitter#enabled"] = true
+      end
+   }
    use "tpope/vim-dispatch"
    use { "radenling/vim-dispatch-neovim", requires = { "tpope/vim-dispatch" } }
    use { "clojure-vim/vim-jack-in", requires = { "radenling/vim-dispatch-neovim" } }
