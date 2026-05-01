@@ -1,0 +1,15 @@
+- name: Get latest ctags information
+  include_tasks: "../../dotfiles-core/tasks/github_release_asset.yml"
+  vars:
+    github_repo: "universal-ctags/ctags-nightly-build"
+
+- name: Install ctags from tarball
+  include_tasks: "../../dotfiles-core/tasks/install_tarball.yml"
+  vars:
+    tarball_app_name: ctags
+    tarball_url: "{{ _gh_download_url }}"
+    tarball_install_dir: "{{ ctags_install_dir }}"
+    tarball_extra_opts:
+      - "--strip-components=1"
+    tarball_binary_subpath: "bin/ctags"
+    tarball_symlink_name: "ctags"
