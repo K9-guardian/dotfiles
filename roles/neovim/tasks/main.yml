@@ -5,6 +5,6 @@
 - name: Copy personal neovim configuration
   ansible.posix.synchronize:
     src: "config/"
-    dest: "~/.config/nvim/"
+    dest: "~/.config/nvim"
     times: false
     checksum: true
