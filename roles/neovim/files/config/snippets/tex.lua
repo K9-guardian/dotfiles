@@ -1,5 +1,3 @@
----@diagnostic disable: undefined-global
-
 local function in_mathzone() return vim.fn["vimtex#syntax#in_mathzone"]() == 1 end
 
 return {
