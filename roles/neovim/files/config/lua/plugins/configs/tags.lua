@@ -5,4 +5,4 @@ vim.g.gutentags_ctags_tagfile = ".tags"
 
 vim.keymap.set('n', 'g]', function()
    require('fzf-lua').tags({ query = vim.fn.expand('<cword>') })
-end, { desc = 'Fzf-lua tags (always pick)' })
+end)
