@@ -2,7 +2,7 @@
   include_role:
     name: core_kitty
 
-- name: Copy personal kitty configuration
+- name: Copy thinkpad kitty configuration
   ansible.posix.synchronize:
     src: "config/"
     dest: "~/.config/kitty"
