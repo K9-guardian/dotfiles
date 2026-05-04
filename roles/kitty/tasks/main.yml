@@ -1,6 +1,6 @@
 - name: Execute core kitty tasks
   include_role:
-    name: core_kitty
+    name: kitty_core
 
 - name: Copy thinkpad kitty configuration
   ansible.posix.synchronize:

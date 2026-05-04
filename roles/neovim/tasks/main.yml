@@ -1,6 +1,6 @@
 - name: Execute core neovim tasks
   include_role:
-    name: core_neovim
+    name: neovim_core
 
 - name: Copy thinkpad neovim configuration
   ansible.posix.synchronize:
