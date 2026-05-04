@@ -1,0 +1,33 @@
+- name: Get latest rclone information
+  include_tasks: "../../dotfiles-core/tasks/github_release_asset.yml"
+  vars:
+    github_repo: "rclone/rclone"
+
+- name: Check if rclone needs update
+  include_tasks: "../../dotfiles-core/tasks/check_version.yml"
+  vars:
+    check_binary_path: "{{ rclone_install_dir }}/bin/rclone"
+    check_version_cmd: "{{ rclone_install_dir }}/bin/rclone --version"
+    check_desired_version: "{{ _gh_desired_version }}"
+    check_app_name: rclone
+
+- name: Install/update rclone
+  when:
+    - _needs_update | default(false)
+    - not ansible_check_mode
+  ansible.builtin.shell:
+    cmd: "sudo -v ; curl https://rclone.org/install.sh | sudo bash"
+  become: true
+
+- name: Ensure fields exist in rclone config
+  community.general.ini_file:
+    path: "~/.config/rclone/rclone.conf"
+    section: "Drive"
+    option: "{{ item.option }}"
+    value: "{{ item.value }}"
+  loop:
+    - { option: "type", value: "drive" }
+    - { option: "client_id", value: "{{ rclone_client_id }}" }
+    - { option: "client_secret", value: "{{ rclone_client_secret }}" }
+    - { option: "scope", value: "drive" }
+    - { option: "team_drive", value: "" }
