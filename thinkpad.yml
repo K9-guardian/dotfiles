@@ -1,11 +1,11 @@
 - hosts: localhost
   connection: local
   roles:
-    - common
-    - kitty
+    - common_core
     - bash_core
+    - fzf_core
+    - cargo_core
+    - kitty
     - neovim
-    - fzf
-    - atuin
     - croc
-    - cargo
+    - rclone
