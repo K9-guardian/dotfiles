@@ -1,14 +1,21 @@
 ANSIBLE_PLAYBOOK := $(HOME)/.local/ansible-venv/bin/ansible-playbook
 INVENTORY := inventory/local/
-PLAYBOOK ?= thinkpad.yml
 
-.PHONY: install check diff lint
+.PHONY: install thinkpad mimir check diff lint
 
 install:
-	$(ANSIBLE_PLAYBOOK) -i $(INVENTORY) $(PLAYBOOK)
+	@echo "Usage: make <thinkpad|mimir>" && exit 1
+
+thinkpad:
+	$(ANSIBLE_PLAYBOOK) -i $(INVENTORY) thinkpad.yml
+
+mimi:
+	$(ANSIBLE_PLAYBOOK) -i $(INVENTORY) mimir.yml
 
 check:
+	@test -n "$(PLAYBOOK)" || { echo "Usage: make check PLAYBOOK=<thinkpad.yml|home-bus.yml>"; exit 1; }
 	$(ANSIBLE_PLAYBOOK) -i $(INVENTORY) $(PLAYBOOK) --check --diff
 
 lint:
+	@test -n "$(PLAYBOOK)" || { echo "Usage: make check PLAYBOOK=<thinkpad.yml|home-bus.yml>"; exit 1; }
 	$(ANSIBLE_PLAYBOOK) -i $(INVENTORY) $(PLAYBOOK) --syntax-check
