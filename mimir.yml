@@ -1,5 +1,7 @@
 - hosts: localhost
   connection: local
+  vars:
+    neovim_osc52_enabled: true
   roles:
     - common_core
     - bash_core
@@ -7,6 +9,5 @@
     - fzf_core
     - cargo_core
     - neovim_core
-    - neovim_osc52_core
     - croc
     - rclone

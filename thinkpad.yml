@@ -1,11 +1,14 @@
 - hosts: localhost
   connection: local
+  vars:
+    kitty_extra_config: "files/thinkpad/kitty/"
+    neovim_extra_config: "files/thinkpad/neovim/"
   roles:
     - common_core
     - bash_core
     - fzf_core
     - cargo_core
-    - kitty
-    - neovim
+    - kitty_core
+    - neovim_core
     - croc
     - rclone
