@@ -9,7 +9,7 @@ install:
 thinkpad:
 	$(ANSIBLE_PLAYBOOK) -i $(INVENTORY) thinkpad.yml
 
-mimi:
+mimir:
 	$(ANSIBLE_PLAYBOOK) -i $(INVENTORY) mimir.yml
 
 check:

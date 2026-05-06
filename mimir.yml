@@ -1,0 +1,12 @@
+- hosts: localhost
+  connection: local
+  roles:
+    - common_core
+    - bash_core
+    - tmux_core
+    - fzf_core
+    - cargo_core
+    - neovim_core
+    - neovim_osc52_core
+    - croc
+    - rclone
