@@ -3,11 +3,11 @@
   vars:
     neovim_osc52_enabled: true
   roles:
-    - common_core
-    - bash_core
-    - tmux_core
-    - fzf_core
-    - cargo_core
-    - neovim_core
+    - common
+    - bash
+    - tmux
+    - fzf
+    - cargo
+    - neovim
     - croc
     - rclone
