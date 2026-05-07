@@ -4,11 +4,11 @@
     kitty_extra_config: "files/thinkpad/kitty/"
     neovim_extra_config: "files/thinkpad/neovim/"
   roles:
-    - common
-    - bash
-    - fzf
-    - cargo
-    - kitty
-    - neovim
-    - croc
-    - rclone
+    - { role: common, tags: always }
+    - { role: bash  , tags: bash   }
+    - { role: fzf   , tags: fzf    }
+    - { role: cargo , tags: cargo  }
+    - { role: kitty , tags: kitty  }
+    - { role: neovim, tags: neovim }
+    - { role: croc  , tags: croc   }
+    - { role: rclone, tags: rclone }
