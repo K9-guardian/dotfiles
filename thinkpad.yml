@@ -4,7 +4,7 @@
     kitty_extra_config: "files/thinkpad/kitty/"
     neovim_extra_config: "files/thinkpad/neovim/"
   roles:
-    - { role: common, tags: always }
+    - { role: common, tags: common }
     - { role: bash,   tags: bash   }
     - { role: fzf,    tags: fzf    }
     - { role: cargo,  tags: cargo  }
