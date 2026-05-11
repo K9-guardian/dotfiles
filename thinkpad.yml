@@ -12,3 +12,4 @@
     - { role: neovim, tags: neovim }
     - { role: croc,   tags: croc   }
     - { role: rclone, tags: rclone }
+    - { role: latex,  tags: latex  }

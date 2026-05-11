@@ -8,6 +8,17 @@ vim.g.vimtex_imaps_leader = "@"
 
 vim.g.vimtex_mappings_disable = { i = { "]]" } }
 
+vim.g.vimtex_syntax_nospell_comments = 1
+
+vim.keymap.set("n", "dsm", "<Plug>(vimtex-env-delete-math)", { buffer = true })
+vim.keymap.set("n", "csm", "<Plug>(vimtex-env-change-math)", { buffer = true })
+vim.keymap.set("n", "tsm", "<Plug>(vimtex-env-toggle-math)", { buffer = true })
+
+vim.keymap.set({ "o", "x" }, "am", "<Plug>(vimtex-a$)", { buffer = true })
+vim.keymap.set({ "o", "x" }, "im", "<Plug>(vimtex-i$)", { buffer = true })
+vim.keymap.set({ "o", "x" }, "ai", "<Plug>(vimtex-am)", { buffer = true })
+vim.keymap.set({ "o", "x" }, "ii", "<Plug>(vimtex-im)", { buffer = true })
+
 -- Move and resize zathura when it is first opened.
 local function open_viewer()
    vim.cmd("VimtexView")
