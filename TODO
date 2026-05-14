@@ -1,6 +1,7 @@
 Neovim
 - Fix failed jumps for using formatprg (not sure what the issue is)
 - Fix empty terminal from chktex dispatch make for latex
+  - Fix latexindent so we don't make indent.log lol
 - Some way to use fzf-lua command_history? maybe something similar to our bash history
   - <C-h> from both normal mode and cmdline? and populate fzf with it?
 - Also want a way to take our current list of files in fzf-lua and quickly turn it into a list to live grep
