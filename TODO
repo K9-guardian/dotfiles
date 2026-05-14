@@ -7,6 +7,8 @@ Neovim
 - Also want a way to take our current list of files in fzf-lua and quickly turn it into a list to live grep
 - ...maybe want a way to get the relative path of a file with fzf file picker? would be useful for ansible
 - maybe use gy in normal mode to get just the basename, since gy in oil gives full path? ideally i want gy in oil to exit tbh.
+- vim-matchup?
+- and we do need to upgrade nvim at some point...
 
 One thing to try to figure out is our gitconfig
 - Are we able to include additional files? If not might be tricky to migrate.
