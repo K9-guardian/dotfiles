@@ -1,12 +1,11 @@
 Neovim
-- Fix failed jumps for using formatprg (not sure what the issue is)
+- get completions from all open buffers
 - Fix empty terminal from chktex dispatch make for latex
-  - Fix latexindent so we don't make indent.log lol
+  - Temporary workaround is to use :make instead of :Make
 - Some way to use fzf-lua command_history? maybe something similar to our bash history
   - <C-h> from both normal mode and cmdline? and populate fzf with it?
 - Also want a way to take our current list of files in fzf-lua and quickly turn it into a list to live grep
 - ...maybe want a way to get the relative path of a file with fzf file picker? would be useful for ansible
-- maybe use gy in normal mode to get just the basename, since gy in oil gives full path? ideally i want gy in oil to exit tbh.
 - vim-matchup?
 - and we do need to upgrade nvim at some point...
 
