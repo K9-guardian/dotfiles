@@ -5,8 +5,6 @@ Neovim
 - Some way to use fzf-lua command_history? maybe something similar to our bash history
   - <C-h> from both normal mode and cmdline? and populate fzf with it?
 - Also want a way to take our current list of files in fzf-lua and quickly turn it into a list to live grep
-- ...maybe want a way to get the relative path of a file with fzf file picker? would be useful for ansible
-- vim-matchup?
 - and we do need to upgrade nvim at some point...
 
 One thing to try to figure out is our gitconfig
