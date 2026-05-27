@@ -2,7 +2,7 @@ ANSIBLE_PLAYBOOK := $(HOME)/.local/ansible-venv/bin/ansible-playbook
 INVENTORY := inventory/local/
 _TAGS := $(if $(TAGS),--tags $(TAGS))
 
-.PHONY: install thinkpad mimir pavillion check diff lint
+.PHONY: install thinkpad mimir pavillion check lint
 
 install:
 	@echo "Usage: make <thinkpad|mimir|pavillion>" && exit 1
