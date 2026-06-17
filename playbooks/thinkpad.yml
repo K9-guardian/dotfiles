@@ -1,8 +1,8 @@
 - hosts: localhost
   connection: local
   vars:
-    kitty_extra_config: "files/thinkpad/kitty/"
-    neovim_extra_config: "files/thinkpad/neovim/"
+    kitty_extra_config: "../files/thinkpad/kitty/"
+    neovim_extra_config: "../files/thinkpad/neovim/"
   roles:
     - { role: common, tags: common }
     - { role: bash,   tags: bash   }
