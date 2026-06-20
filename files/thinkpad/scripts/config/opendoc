@@ -1,0 +1,12 @@
+#!/bin/sh
+nohup zathura "$1" > /dev/null 2>&1 &
+ZATHURA_PID=$!
+
+for i in $(seq 1 10); do
+  sleep 0.2
+  win_id=$(wmctrl -lp | grep "$ZATHURA_PID" | awk '{print $1}')
+  if [ -n "$win_id" ]; then
+    wmctrl -ia "$win_id"
+    break
+  fi
+done

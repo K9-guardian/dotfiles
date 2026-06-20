@@ -1,0 +1,15 @@
+#!/bin/sh
+export BORG_REPO="/run/media/k9guardian/Backup/borg_homedirs/"
+export BORG_PASSCOMMAND="cat $HOME/.passfiles/borg_k9guardian"
+borg create --stats --progress ::{user}@{hostname}:{now} \
+  "$HOME/Documents" \
+  "$HOME/Pictures" \
+  "$HOME/Music" \
+  "$HOME/Videos" \
+  "$HOME/Games" \
+  "$HOME/.config" \
+  "$HOME/.local" \
+  "$HOME/.gnupg" \
+  "$HOME/.passfiles" \
+  "$HOME/.password-store" \
+  "$HOME/.ssh"

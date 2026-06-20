@@ -1,15 +1,17 @@
 - hosts: localhost
   connection: local
   vars:
-    kitty_extra_config: "../files/thinkpad/kitty/"
-    neovim_extra_config: "../files/thinkpad/neovim/"
+    kitty_extra_config: "../files/thinkpad/kitty"
+    neovim_extra_config: "../files/thinkpad/neovim"
+    extra_scripts: "../files/thinkpad/scripts"
   roles:
-    - { role: common, tags: common }
-    - { role: bash,   tags: bash   }
-    - { role: fzf,    tags: fzf    }
-    - { role: cargo,  tags: cargo  }
-    - { role: kitty,  tags: kitty  }
-    - { role: neovim, tags: neovim }
-    - { role: croc,   tags: croc   }
-    - { role: rclone, tags: rclone }
-    - { role: latex,  tags: latex  }
+    - { role: common,  tags: common  }
+    - { role: bash,    tags: bash    }
+    - { role: fzf,     tags: fzf     }
+    - { role: cargo,   tags: cargo   }
+    - { role: kitty,   tags: kitty   }
+    - { role: neovim,  tags: neovim  }
+    - { role: croc,    tags: croc    }
+    - { role: rclone,  tags: rclone  }
+    - { role: scripts, tags: scripts }
+    - { role: latex,   tags: latex   }

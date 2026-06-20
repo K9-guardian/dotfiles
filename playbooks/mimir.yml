@@ -3,11 +3,12 @@
   vars:
     neovim_osc52_enabled: true
   roles:
-    - { role: common, tags: common }
-    - { role: bash,   tags: bash   }
-    - { role: tmux,   tags: tmux   }
-    - { role: fzf,    tags: fzf    }
-    - { role: cargo,  tags: cargo  }
-    - { role: neovim, tags: neovim }
-    - { role: croc,   tags: croc   }
-    - { role: rclone, tags: rclone }
+    - { role: common,  tags: common  }
+    - { role: bash,    tags: bash    }
+    - { role: tmux,    tags: tmux    }
+    - { role: fzf,     tags: fzf     }
+    - { role: cargo,   tags: cargo   }
+    - { role: neovim,  tags: neovim  }
+    - { role: croc,    tags: croc    }
+    - { role: rclone,  tags: rclone  }
+    - { role: scripts, tags: scripts }
