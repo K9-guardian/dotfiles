@@ -2,10 +2,10 @@ ANSIBLE_PLAYBOOK := $(HOME)/.local/ansible-venv/bin/ansible-playbook
 INVENTORY := inventory/local/
 _TAGS := $(if $(TAGS),--tags $(TAGS))
 
-.PHONY: install thinkpad mimir pavillion check lint
+.PHONY: install thinkpad mimir pavillion wyrd check lint
 
 install:
-	@echo "Usage: make <thinkpad|mimir|pavillion>" && exit 1
+	@echo "Usage: make <thinkpad|mimir|pavillion|wyrd>" && exit 1
 
 thinkpad:
 	$(ANSIBLE_PLAYBOOK) -i $(INVENTORY) playbooks/thinkpad.yml $(_TAGS)
@@ -16,10 +16,13 @@ mimir:
 pavillion:
 	$(ANSIBLE_PLAYBOOK) -i $(INVENTORY) playbooks/pavillion.yml $(_TAGS)
 
+wyrd:
+	$(ANSIBLE_PLAYBOOK) -i $(INVENTORY) playbooks/wyrd.yml $(_TAGS)
+
 check:
-	@test -n "$(PLAYBOOK)" || { echo "Usage: make check PLAYBOOK=playbooks/<thinkpad.yml|mimir.yml|pavillion.yml>"; exit 1; }
+	@test -n "$(PLAYBOOK)" || { echo "Usage: make check PLAYBOOK=playbooks/<thinkpad|mimir|pavillion|wyrd>.yml"; exit 1; }
 	$(ANSIBLE_PLAYBOOK) -i $(INVENTORY) $(PLAYBOOK) --check --diff $(_TAGS)
 
 lint:
-	@test -n "$(PLAYBOOK)" || { echo "Usage: make check PLAYBOOK=<thinkpad.yml|mimir.yml|pavillion.yml>"; exit 1; }
+	@test -n "$(PLAYBOOK)" || { echo "Usage: make check PLAYBOOK=<thinkpad|mimir|pavillion|wyrd>.yml"; exit 1; }
 	$(ANSIBLE_PLAYBOOK) -i $(INVENTORY) $(PLAYBOOK) --syntax-check $(_TAGS)
