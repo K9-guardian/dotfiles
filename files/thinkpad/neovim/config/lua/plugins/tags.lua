@@ -1,3 +1,5 @@
-return function(use)
-   use { "ludovicchabant/vim-gutentags", config = function() require("plugins.configs.tags") end }
-end
+vim.pack.add({
+   "https://github.com/ludovicchabant/vim-gutentags",
+})
+
+require("plugins.configs.tags")

@@ -1,13 +1,10 @@
-return function(use)
-   use "fladson/vim-kitty"
-   use "wlangstroth/vim-racket"
-   use "adimit/prolog.vim"
+vim.pack.add({
+   "https://github.com/fladson/vim-kitty",
+   "https://github.com/wlangstroth/vim-racket",
+   "https://github.com/adimit/prolog.vim",
+   "https://github.com/Olical/conjure",
+   "https://github.com/radenling/vim-dispatch-neovim",
+   "https://github.com/clojure-vim/vim-jack-in",
+})
 
-   use {
-      "Olical/conjure",
-      config = function()
-         vim.g["conjure#extract#tree_sitter#enabled"] = true
-      end
-   }
-   use { "clojure-vim/vim-jack-in", requires = { "radenling/vim-dispatch-neovim" } }
-end
+require("plugins.configs.conjure")
