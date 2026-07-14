@@ -1,14 +1,12 @@
 Neovim
-- get completions from all open buffers
 - Fix empty terminal from chktex dispatch make for latex
   - Temporary workaround is to use :make instead of :Make
 - Some way to use fzf-lua command_history? maybe something similar to our bash history
   - <C-h> from both normal mode and cmdline? and populate fzf with it?
 - Also want a way to take our current list of files in fzf-lua and quickly turn it into a list to live grep
-- and we do need to upgrade nvim at some point...
 
 One thing to try to figure out is our gitconfig
 - Are we able to include additional files? If not might be tricky to migrate.
 
 Bunch of stuff remaining in .dotfiles
-- And stuff we didn't really track like oriedita tbh
+- And stuff we didn't really track like udev, oriedita, etc.
