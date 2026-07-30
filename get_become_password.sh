@@ -1,7 +1,7 @@
 #!/bin/bash
 PASSFILE="/dev/shm/${USER}_dotfiles_ansible_become_passfile"
 TIMER="dotfiles-ansible-passfile-shred"
-DURATION="15m"
+DURATION="5m"
 
 if [ -s "$PASSFILE" ]; then
   cat "$PASSFILE"
