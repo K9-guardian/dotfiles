@@ -26,8 +26,8 @@
     option: "{{ item.option }}"
     value: "{{ item.value }}"
   loop:
-    - { option: "type", value: "drive" }
-    - { option: "client_id", value: "{{ rclone_client_id }}" }
+    - { option: "type",          value: "drive" }
+    - { option: "client_id",     value: "{{ rclone_client_id }}" }
     - { option: "client_secret", value: "{{ rclone_client_secret }}" }
-    - { option: "scope", value: "drive" }
-    - { option: "team_drive", value: "" }
+    - { option: "scope",         value: "drive" }
+    - { option: "team_drive",    value: "" }
