@@ -1,0 +1,36 @@
+- name: Get latest clojure information
+  include_tasks: "../../dotfiles-core/tasks/github_release_asset.yml"
+  vars:
+    github_repo: "clojure/brew-install"
+
+- name: Check if clojure needs update
+  include_tasks: "../../dotfiles-core/tasks/check_version.yml"
+  vars:
+    check_binary_path: "{{ clojure_binary }}"
+    check_version_cmd: "{{ clojure_binary }} --version"
+    check_desired_version: "{{ _gh_desired_version }}"
+    check_app_name: clojure
+
+- name: Install/update clojure
+  when:
+    - _needs_update | default(false)
+    - not ansible_check_mode
+  ansible.builtin.shell:
+    cmd: >-
+      curl -fsSL https://github.com/clojure/brew-install/releases/latest/download/linux-install.sh | sudo bash
+  become: true
+
+- name: Ensure clojure config directory exists
+  ansible.builtin.file:
+    path: "~/.config/clojure"
+    state: directory
+    mode: '755'
+
+- name: Stow clojure configuration
+  ansible.builtin.command:
+    cmd: >
+      {{ ansible_facts.user_dir }}/.local/bin/stow --dotfiles --no-folding {{ stow_extra_args }}
+      --dir={{ role_path }}/files
+      --target={{ ansible_facts.user_dir }}/.config/clojure
+      config
+  changed_when: false
