@@ -12,6 +12,7 @@
     - { role: cargo,   tags: cargo   }
     - { role: kitty,   tags: kitty   }
     - { role: neovim,  tags: neovim  }
+    - { role: cron,    tags: cron    }
     - { role: croc,    tags: croc    }
     - { role: rclone,  tags: rclone  }
     - { role: scripts, tags: scripts }

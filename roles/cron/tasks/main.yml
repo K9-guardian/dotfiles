@@ -1,0 +1,5 @@
+- name: Add tldr cache update to hourly crontab
+  ansible.builtin.cron:
+    name: "update tldr cache"
+    special_time: hourly
+    job: "$HOME/.cargo/bin/tldr --update"
