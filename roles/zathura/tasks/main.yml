@@ -1,0 +1,21 @@
+- name: Install zathura
+  ansible.builtin.dnf:
+    name: zathura
+    state: latest
+  become: true
+
+- name: Ensure zathura config directory exists
+  ansible.builtin.file:
+    path: "~/.config/zathura"
+    state: directory
+    mode: '755'
+
+- name: Stow zathura configuration
+  ansible.builtin.command:
+    cmd: >
+      {{ ansible_facts.user_dir }}/.local/bin/stow --dotfiles --no-folding {{ stow_extra_args }}
+      --dir={{ role_path }}/files
+      --target={{ ansible_facts.user_dir }}/.config/zathura
+      config
+  changed_when: false
+

@@ -16,4 +16,5 @@
     - { role: rclone,  tags: rclone  }
     - { role: scripts, tags: scripts }
     - { role: latex,   tags: latex   }
+    - { role: zathura, tags: zathura }
     - { role: clojure, tags: clojure }
