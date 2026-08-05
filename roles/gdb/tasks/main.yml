@@ -1,0 +1,20 @@
+- name: Install gdb
+  ansible.builtin.dnf:
+    name: gdb
+    state: latest
+  become: true
+
+- name: Ensure gdb config directory exists
+  ansible.builtin.file:
+    path: "~/.config/gdb"
+    state: directory
+    mode: '755'
+
+- name: Stow gdb configuration
+  ansible.builtin.command:
+    cmd: >
+      {{ ansible_facts.user_dir }}/.local/bin/stow --dotfiles --no-folding {{ stow_extra_args }}
+      --dir={{ role_path }}/files
+      --target={{ ansible_facts.user_dir }}/.config/gdb
+      config
+  changed_when: false

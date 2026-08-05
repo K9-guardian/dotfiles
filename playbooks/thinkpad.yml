@@ -17,4 +17,5 @@
     - { role: scripts, tags: scripts }
     - { role: latex,   tags: latex   }
     - { role: zathura, tags: zathura }
+    - { role: gdb,     tags: gdb     }
     - { role: clojure, tags: clojure }
