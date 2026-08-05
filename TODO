@@ -5,8 +5,6 @@ Neovim
   - <C-h> from both normal mode and cmdline? and populate fzf with it?
 - Also want a way to take our current list of files in fzf-lua and quickly turn it into a list to live grep
 
-One thing to try to figure out is our gitconfig
-- Are we able to include additional files? If not might be tricky to migrate.
+Migrate stuff we didn't track like udev, oriedita, etc.
 
-Bunch of stuff remaining in .dotfiles
-- And stuff we didn't really track like udev, oriedita, etc.
+Move cloud-backup to a separate repository.
