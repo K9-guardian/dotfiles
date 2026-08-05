@@ -1,0 +1,19 @@
+#!/bin/bash
+REPO_NAME="thinkpad-T480s_borg"
+export BORG_REPO="$HOME/.$REPO_NAME"
+export BORG_PASSCOMMAND="cat $HOME/.passfiles/borg_k9guardian"
+
+borg prune --stats --keep-daily=7 --keep-weekly=4 --keep-monthly=-1
+borg compact
+
+borg create --stats ::{now} \
+  "$HOME/Books/" \
+  "$HOME/Documents/Life/" \
+  "$HOME/Documents/Origami/" \
+  "$HOME/Documents/PII/" \
+  "$HOME/.gnupg" \
+  "$HOME/.local/state/syncthing/config.xml" \
+  "$HOME/.local/state/syncthing/cert.pem" \
+  "$HOME/.local/state/syncthing/key.pem"
+
+rclone -v sync "$BORG_REPO" "Drive:$REPO_NAME"
