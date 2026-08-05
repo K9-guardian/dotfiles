@@ -2,6 +2,7 @@
   connection: local
   vars:
     neovim_osc52_enabled: true
+    extra_scripts: "../files/mimir/scripts"
   roles:
     - { role: common,  tags: common  }
     - { role: bash,    tags: bash    }
