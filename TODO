@@ -8,3 +8,5 @@ Neovim
 Migrate stuff we didn't track like udev, oriedita, etc.
 
 Move cloud-backup to a separate repository.
+
+Add mdfried
