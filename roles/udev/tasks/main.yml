@@ -1,0 +1,10 @@
+- name: Copy udev rule for F4
+  ansible.builtin.copy:
+    src: "98-t480s-f4-remap.hwdb"
+    dest: "/etc/udev/hwdb.d/98-t480s-f4-remap.hwdb"
+    mode: '644'
+  become: true
+  notify:
+    - Rebuild hwdb
+    - Reload udev
+    - Trigger udev

@@ -6,6 +6,9 @@
     extra_scripts: "../files/thinkpad/scripts"
   roles:
     - { role: common,  tags: common  }
+    # Hardware
+    - { role: udev,    tags: udev    }
+    # Software
     - { role: bash,    tags: bash    }
     - { role: git,     tags: git     }
     - { role: fzf,     tags: fzf     }

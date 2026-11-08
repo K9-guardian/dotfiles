@@ -1,0 +1,11 @@
+- name: Rebuild hwdb
+  ansible.builtin.command: systemd-hwdb update
+  changed_when: true
+
+- name: Reload udev
+  ansible.builtin.command: udevadm control --reload
+  changed_when: true
+
+- name: Trigger udev
+  ansible.builtin.command: udevadm trigger
+  changed_when: true

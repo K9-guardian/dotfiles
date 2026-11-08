@@ -1,0 +1,2 @@
+evdev:name:ThinkPad Extra Buttons:*
+ KEYBOARD_KEY_1a=playpause
