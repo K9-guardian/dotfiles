@@ -7,10 +7,7 @@ Neovim
 
 Move cloud-backup to a separate repository.
 
+Add racket
 Add mdfried
 
-Look into unison for syncing annoying configs like inkscape,oriedita,calibre,etc.
-This seems to be essentially a one-shot syncthing, but I will need to use tailscale ssh for this.
-Since my thinkpad is on 24/7, this will let me quickly sync when I turn on my desktop.
-Drift between these configs is unlikely given how infrequently they change.
-I will still need to whitelist the files that actually get synced.
+Add inkscape, oriedita, calibre, and other guis I'm forgetting
