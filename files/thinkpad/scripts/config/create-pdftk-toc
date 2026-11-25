@@ -9,13 +9,13 @@ def ensure_consistent_toc_indentation(toc: str):
     found_spaces, found_tabs = False, False
 
     for line_number, line in enumerate(toc.splitlines()):
-        leading_whitespace = line[:len(line) - len(line.lstrip())]
-        if '\t' in leading_whitespace:
-            if ' ' in leading_whitespace or found_spaces:
+        leading_whitespace = line[: len(line) - len(line.lstrip())]
+        if "\t" in leading_whitespace:
+            if " " in leading_whitespace or found_spaces:
                 raise ValueError(f"{line_number + 1}: Mixed spaces and tabs")
             found_tabs = True
-        elif ' ' in leading_whitespace:
-            if '\t' in leading_whitespace or found_tabs:
+        elif " " in leading_whitespace:
+            if "\t" in leading_whitespace or found_tabs:
                 raise ValueError(f"{line_number + 1}: Mixed spaces and tabs")
             found_spaces = True
 
@@ -29,8 +29,9 @@ def identify_toc_indent_amount(raw_toc: str) -> int:
 
     for line in raw_toc.splitlines():
         leading_whitespace_amount = len(line) - len(line.lstrip())
-        indent_amount = abs(leading_whitespace_amount -
-                            current_leading_whitespace_amount)
+        indent_amount = abs(
+            leading_whitespace_amount - current_leading_whitespace_amount
+        )
         if indent_amount > 1:
             possible_indent_amounts[indent_amount] += 1
         current_leading_whitespace_amount = leading_whitespace_amount
@@ -47,12 +48,14 @@ def print_toc(toc: str, indent_amount: int):
         leading_whitespace_amount = len(line) - len(line.lstrip())
         if leading_whitespace_amount % indent_amount != 0:
             raise ValueError(
-                f"{line_number + 1}: Does not match the inferred indent amount of {indent_amount}")
+                f"{line_number + 1}: Does not match the inferred indent amount of {indent_amount}"
+            )
         indentation_level = leading_whitespace_amount // indent_amount
-        match = re.fullmatch(r'^\s*(.*)\s+(\d+)$', line)
+        match = re.fullmatch(r"^\s*(.*)\s+(\d+)$", line)
         if not match:
             raise ValueError(
-                f"{line_number + 1}: Not formatted as \"(title) (page_number)\"")
+                f'{line_number + 1}: Not formatted as "(title) (page_number)"'
+            )
         title, page_number = match.group(1, 2)
 
         print("BookmarkBegin")
@@ -89,12 +92,12 @@ Appendix 20
 To add this table of contents to your pdf, run
 `pdftk input.pdf update_info bookmarks.txt output output.pdf`.
 More info here: https://stackoverflow.com/a/30308964
-"""
+""",
 )
-parser.add_argument('input', type=str, help="indented table of contents")
+parser.add_argument("input", type=str, help="indented table of contents")
 
 args = parser.parse_args()
-with open(args.input, 'r') as input:
+with open(args.input, "r") as input:
     toc = input.read()
     ensure_consistent_toc_indentation(toc)
     indent_amount = identify_toc_indent_amount(toc)
