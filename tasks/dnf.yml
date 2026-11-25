@@ -1,0 +1,22 @@
+# Ensure dnf packages are installed and up to date.
+# Input variables:
+#   dnf_packages - list of packages.
+- name: Check installed packages versions
+  ansible.builtin.command:
+    cmd: rpm -q {{ dnf_packages | map('quote') | join(' ') }}
+  register: _dnf_before
+  failed_when: false
+  changed_when: false
+
+- name: Install or upgrade packages
+  ansible.builtin.command:
+    cmd: dnf install -y {{ dnf_packages | map('quote') | join(' ') }}
+  become: true
+  when: not ansible_check_mode
+  changed_when: false
+
+- name: Compare installed packages versions
+  ansible.builtin.command:
+    cmd: rpm -q {{ dnf_packages | map('quote') | join(' ') }}
+  register: _dnf_after
+  changed_when: _dnf_before.stdout != _dnf_after.stdout

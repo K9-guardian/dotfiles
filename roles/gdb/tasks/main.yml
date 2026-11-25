@@ -1,8 +1,8 @@
 - name: Install gdb
-  ansible.builtin.dnf:
-    name: gdb
-    state: latest
-  become: true
+  include_tasks: "../../tasks/dnf.yml"
+  vars:
+    dnf_packages:
+      - racket
 
 - name: Ensure gdb config directory exists
   ansible.builtin.file:

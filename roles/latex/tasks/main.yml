@@ -1,8 +1,8 @@
 - name: Install latex
-  ansible.builtin.dnf:
-    name: texlive-scheme-full
-    state: latest
-  become: true
+  include_tasks: "../../tasks/dnf.yml"
+  vars:
+    dnf_packages:
+      - racket
 
 - name: Copy latexindent config
   template:

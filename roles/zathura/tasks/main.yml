@@ -1,8 +1,8 @@
 - name: Install zathura
-  ansible.builtin.dnf:
-    name: zathura
-    state: latest
-  become: true
+  include_tasks: "../../tasks/dnf.yml"
+  vars:
+    dnf_packages:
+      - racket
 
 - name: Ensure zathura config directory exists
   ansible.builtin.file:
