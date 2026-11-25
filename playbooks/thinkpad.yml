@@ -1,6 +1,7 @@
 - hosts: localhost
   connection: local
   vars:
+    bash_extra_config: "../files/thinkpad/bash"
     kitty_extra_config: "../files/thinkpad/kitty"
     neovim_extra_config: "../files/thinkpad/neovim"
     extra_scripts: "../files/thinkpad/scripts"
