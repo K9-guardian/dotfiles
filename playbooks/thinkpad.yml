@@ -24,3 +24,4 @@
     - { role: zathura, tags: zathura }
     - { role: gdb,     tags: gdb     }
     - { role: clojure, tags: clojure }
+    - { role: racket,  tags: racket  }

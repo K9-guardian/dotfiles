@@ -1,0 +1,5 @@
+- name: Install racket
+  include_tasks: "../../tasks/dnf.yml"
+  vars:
+    dnf_packages:
+      - racket
