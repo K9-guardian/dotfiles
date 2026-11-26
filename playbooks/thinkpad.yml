@@ -8,22 +8,23 @@
       - "../files/personal/scripts"
       - "../files/thinkpad/scripts"
   roles:
-    - { role: common,  tags: common  }
+    - { role: common, tags: common }
     # Hardware
-    - { role: udev,    tags: udev    }
+    - { role: udev, tags: udev }
     # Software
-    - { role: bash,    tags: bash    }
-    - { role: git,     tags: git     }
-    - { role: fzf,     tags: fzf     }
-    - { role: cargo,   tags: cargo   }
-    - { role: kitty,   tags: kitty   }
-    - { role: neovim,  tags: neovim  }
-    - { role: cron,    tags: cron    }
-    - { role: croc,    tags: croc    }
-    - { role: rclone,  tags: rclone  }
+    - { role: bash, tags: bash }
+    - { role: git, tags: git }
+    - { role: fzf, tags: fzf }
+    - { role: cargo, tags: cargo }
+    - { role: kitty, tags: kitty }
+    - { role: neovim, tags: neovim }
+    - { role: cron, tags: cron }
+    - { role: croc, tags: croc }
+    - { role: rclone, tags: rclone }
     - { role: scripts, tags: scripts }
-    - { role: latex,   tags: latex   }
+    - { role: latex, tags: latex }
     - { role: zathura, tags: zathura }
-    - { role: gdb,     tags: gdb     }
+    - { role: gdb, tags: gdb }
     - { role: clojure, tags: clojure }
-    - { role: racket,  tags: racket  }
+    - { role: racket, tags: racket }
+    - { role: inkscape, tags: inkscape }

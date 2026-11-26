@@ -1,0 +1,63 @@
+- name: Install inkscape
+  include_tasks: "../../tasks/dnf.yml"
+  vars:
+    dnf_packages:
+      - inkscape
+
+- name: Ensure Inkscape extensions and templates directories exist
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    mode: "0755"
+  loop:
+    - "{{ ansible_facts.user_dir }}/.config/inkscape/extensions"
+    - "{{ ansible_facts.user_dir }}/.config/inkscape/keys"
+    - "{{ ansible_facts.user_dir }}/.config/inkscape/templates"
+
+- name: Download inx-pathops tarball
+  ansible.builtin.get_url:
+    url: "https://gitlab.com/moini_ink/inx-pathops/-/archive/master/inx-pathops-master.tar.gz"
+    dest: "/tmp/inx-pathops-master.tar.gz"
+    mode: "0644"
+  register: pathops_download
+
+- name: Install inx-pathops
+  when: pathops_download.changed
+  block:
+    - name: Unarchive inx-pathops
+      ansible.builtin.unarchive:
+        src: "/tmp/inx-pathops-master.tar.gz"
+        dest: "/tmp"
+        remote_src: true
+
+    - name: Find .inx and .py files one layer deep in extracted archive
+      ansible.builtin.find:
+        paths: "/tmp/inx-pathops-master"
+        patterns:
+          - "*.inx"
+          - "*.py"
+        recurse: false
+      register: pathops_files
+
+    - name: Copy .inx and .py files to extensions directory
+      ansible.builtin.copy:
+        src: "{{ item.path }}"
+        dest: "{{ ansible_facts.user_dir }}/.config/inkscape/extensions/{{ item.path | basename }}"
+        remote_src: true
+        mode: "0644"
+      loop: "{{ pathops_files.files }}"
+
+- name: Stow inkscape configuration
+  ansible.builtin.command:
+    cmd: >
+      {{ ansible_facts.user_dir }}/.local/bin/stow --dotfiles --no-folding {{ stow_extra_args }}
+      --dir={{ role_path }}/files
+      --target={{ ansible_facts.user_dir }}/.config/inkscape
+      config
+  changed_when: false
+
+- name: Download tsai_symbols.svg
+  ansible.builtin.get_url:
+    url: "https://origami.abstreamace.com/wp-content/uploads/2022/04/template.svg"
+    dest: "{{ ansible_facts.user_dir }}/.config/inkscape/templates/tsai_symbols.svg"
+    mode: "0644"
