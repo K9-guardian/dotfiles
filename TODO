@@ -5,6 +5,4 @@ Neovim
   - <C-h> from both normal mode and cmdline? and populate fzf with it?
 - Also want a way to take our current list of files in fzf-lua and quickly turn it into a list to live grep
 
-Move cloud-backup to a separate repository
-
 Add Inkscape, Oriedita, and other GUIs I'm forgetting
