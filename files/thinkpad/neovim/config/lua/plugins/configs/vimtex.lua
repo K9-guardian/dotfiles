@@ -21,32 +21,36 @@ vim.keymap.set({ "o", "x" }, "ii", "<Plug>(vimtex-im)", { buffer = true })
 
 -- Move and resize zathura when it is first opened.
 local function open_viewer()
-   vim.cmd("VimtexView")
+	vim.cmd("VimtexView")
 
-   for _ = 1, 10 do
-      vim.cmd("sleep 200m")
-      local viewer_opened = vim.b.vimtex.viewer.xwin_id and vim.b.vimtex.viewer.xwin_id ~= 0
+	for _ = 1, 10 do
+		vim.cmd("sleep 200m")
+		local viewer_opened = vim.b.vimtex.viewer.xwin_id and vim.b.vimtex.viewer.xwin_id ~= 0
 
-      if viewer_opened then
-         os.execute("wmctrl -ir " .. vim.b.vimtex.viewer.xwin_id .. " -b remove,maximized_vert,maximized_horz")
-         os.execute("xdotool windowsize " .. vim.b.vimtex.viewer.xwin_id .. " 50% 100%")
-         os.execute("xdotool windowmove " .. vim.b.vimtex.viewer.xwin_id .. " 50% 100%")
-         break
-      end
-   end
+		if viewer_opened then
+			os.execute("wmctrl -ir " .. vim.b.vimtex.viewer.xwin_id .. " -b remove,maximized_vert,maximized_horz")
+			os.execute("xdotool windowsize " .. vim.b.vimtex.viewer.xwin_id .. " 50% 100%")
+			os.execute("xdotool windowmove " .. vim.b.vimtex.viewer.xwin_id .. " 50% 100%")
+			break
+		end
+	end
 end
 
 local function close_viewer()
-   if (vim.b.vimtex.viewer.xwin_id and vim.b.vimtex.viewer.xwin_id ~= 0) then
-      os.execute("xdotool windowclose " .. vim.b.vimtex.viewer.xwin_id)
-      vim.cmd("VimtexClean")
-   end
+	if vim.b.vimtex.viewer.xwin_id and vim.b.vimtex.viewer.xwin_id ~= 0 then
+		os.execute("xdotool windowclose " .. vim.b.vimtex.viewer.xwin_id)
+		vim.cmd("VimtexClean")
+	end
 end
 
 vim.api.nvim_create_augroup("vimtex", {})
 vim.api.nvim_create_autocmd("User", {
-   pattern = "VimtexEventCompileSuccess", group = "vimtex", callback = open_viewer
+	pattern = "VimtexEventCompileSuccess",
+	group = "vimtex",
+	callback = open_viewer,
 })
 vim.api.nvim_create_autocmd("User", {
-   pattern = "VimtexEventQuit", group = "vimtex", callback = close_viewer
+	pattern = "VimtexEventQuit",
+	group = "vimtex",
+	callback = close_viewer,
 })
