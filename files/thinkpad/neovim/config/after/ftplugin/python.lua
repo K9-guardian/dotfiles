@@ -1,3 +1,4 @@
 if vim.fn.executable("ruff") == 1 then
-   vim.bo.formatprg = "ruff format -"
+   local file = vim.fn.shellescape(vim.api.nvim_buf_get_name(0))
+   vim.bo.formatprg = "ruff format --stdin-filename " .. file .. " -"
 end
