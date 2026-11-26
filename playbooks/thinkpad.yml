@@ -3,8 +3,10 @@
   vars:
     bash_extra_config: "../files/thinkpad/bash"
     kitty_extra_config: "../files/thinkpad/kitty"
-    neovim_extra_config: "../files/thinkpad/neovim"
-    extra_scripts: "../files/thinkpad/scripts"
+    neovim_extra_config: "../files/personal/neovim"
+    extra_scripts:
+      - "../files/personal/scripts"
+      - "../files/thinkpad/scripts"
   roles:
     - { role: common,  tags: common  }
     # Hardware
