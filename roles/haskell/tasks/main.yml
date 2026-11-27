@@ -9,7 +9,22 @@
     cmd: "curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | BOOTSTRAP_HASKELL_NONINTERACTIVE=1 BOOTSTRAP_HASKELL_INSTALL_NO_STACK=1 sh"
   when: ghcup_check.rc != 0
 
-# TODO: Install ormolu.
-#  Don't really want to build this from source, and the github provides zipped releases.
-#  Maybe I can update install_tarball.yml to support .zip as well?
-#  Can name it install_archive.yml?
+- name: Get latest ormolu information
+  include_tasks: "../../dotfiles-core/tasks/github_release_asset.yml"
+  vars:
+    github_repo: "tweag/ormolu"
+
+- name: Install ormolu from zip
+  include_tasks: "../../dotfiles-core/tasks/install_tarball.yml"
+  vars:
+    tarball_app_name: ormolu
+    tarball_url: "{{ _gh_download_url }}"
+    tarball_install_dir: "{{ ormolu_install_dir }}"
+    tarball_binary_subpath: "ormolu"
+    tarball_symlink_name: "ormolu"
+
+- name: Ensure ormolu is executable
+  ansible.builtin.file:
+    path: "{{ ormolu_install_dir }}/ormolu"
+    mode: "0755"
+  become: true
