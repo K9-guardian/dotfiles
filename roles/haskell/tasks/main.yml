@@ -1,0 +1,15 @@
+- name: Check if ghcup is installed
+  command: "{{ ansible_facts.user_dir }}/.ghcup/bin/ghcup --version"
+  register: ghcup_check
+  changed_when: false
+  failed_when: false
+
+- name: Install haskell toolchain
+  ansible.builtin.shell:
+    cmd: "curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | BOOTSTRAP_HASKELL_NONINTERACTIVE=1 BOOTSTRAP_HASKELL_INSTALL_NO_STACK=1 sh"
+  when: ghcup_check.rc != 0
+
+- name: Install ormolu
+  ansible.builtin.shell:
+    cmd: "{{ ansible_facts.user_dir }}/.ghcup/bin/cabal install ormolu"
+  when: ghcup_check.rc != 0
