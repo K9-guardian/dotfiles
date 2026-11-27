@@ -9,7 +9,7 @@
     cmd: "curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | BOOTSTRAP_HASKELL_NONINTERACTIVE=1 BOOTSTRAP_HASKELL_INSTALL_NO_STACK=1 sh"
   when: ghcup_check.rc != 0
 
-- name: Install ormolu
-  ansible.builtin.shell:
-    cmd: "{{ ansible_facts.user_dir }}/.ghcup/bin/cabal install ormolu"
-  when: ghcup_check.rc != 0
+# TODO: Install ormolu.
+#  Don't really want to build this from source, and the github provides zipped releases.
+#  Maybe I can update install_tarball.yml to support .zip as well?
+#  Can name it install_archive.yml?
