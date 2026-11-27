@@ -6,5 +6,4 @@ Neovim
 - Also want a way to take our current list of files in fzf-lua and quickly turn it into a list to live grep
 
 Fix racket to use portable binary instead of rpm
-Add haskell
 Add Oriedita and other GUIs I'm forgetting
