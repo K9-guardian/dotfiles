@@ -14,14 +14,14 @@
   vars:
     github_repo: "tweag/ormolu"
 
-- name: Install ormolu from zip
-  include_tasks: "../../dotfiles-core/tasks/install_tarball.yml"
+- name: Install ormolu from archive
+  include_tasks: "../../dotfiles-core/tasks/install_archive.yml"
   vars:
-    tarball_app_name: ormolu
-    tarball_url: "{{ _gh_download_url }}"
-    tarball_install_dir: "{{ ormolu_install_dir }}"
-    tarball_binary_subpath: "ormolu"
-    tarball_symlink_name: "ormolu"
+    archive_app_name: ormolu
+    archive_url: "{{ _gh_download_url }}"
+    archive_install_dir: "{{ ormolu_install_dir }}"
+    archive_binary_subpath: "ormolu"
+    archive_symlink_name: "ormolu"
 
 - name: Ensure ormolu is executable
   ansible.builtin.file:
