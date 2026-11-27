@@ -17,15 +17,17 @@
     - { role: fzf, tags: fzf }
     - { role: cargo, tags: cargo }
     - { role: kitty, tags: kitty }
-    - { role: neovim, tags: neovim }
+    - { role: inkscape, tags: inkscape }
+    - { role: zathura, tags: zathura }
     - { role: cron, tags: cron }
     - { role: croc, tags: croc }
     - { role: rclone, tags: rclone }
     - { role: scripts, tags: scripts }
-    - { role: latex, tags: latex }
-    - { role: zathura, tags: zathura }
+    # Development
+    - { role: neovim, tags: neovim }
+    - { role: ctags, tags: ctags }
     - { role: gdb, tags: gdb }
+    - { role: latex, tags: latex }
     - { role: clojure, tags: clojure }
     - { role: racket, tags: racket }
     - { role: haskell, tags: haskell }
-    - { role: inkscape, tags: inkscape }
