@@ -1,0 +1,28 @@
+- name: Install konsave
+  ansible.builtin.command:
+    cmd: "{{ ansible_facts.user_dir }}/.local/bin/uv tool install konsave"
+  register: konsave_uvtoolinstall
+  changed_when: "'is already installed' not in konsave_uvtoolinstall.stderr"
+
+- name: Download media-player-inhibit-sleep to ~/.bin
+  ansible.builtin.get_url:
+    url: https://raw.githubusercontent.com/bheiskell/kde-media-sleep-block/refs/heads/main/media-player-inhibit-sleep.py
+    dest: "{{ ansible_facts.user_dir }}/.bin/media-player-inhibit-sleep"
+    mode: "0755"
+
+- name: Get existing konsave profiles
+  ansible.builtin.command:
+    cmd: "{{ ansible_facts.user_dir }}/.local/bin/konsave -l"
+  register: konsave_list
+  changed_when: false
+
+- name: Use k9 profile
+  when: "'k9' not in konsave_list.stdout"
+  block:
+    - name: Import k9.knsv
+      ansible.builtin.command:
+        cmd: "{{ ansible_facts.user_dir }}/.local/bin/konsave -i {{ role_path }}/files/k9.knsv"
+
+    - name: Apply k9 profile
+      ansible.builtin.command:
+        cmd: "{{ ansible_facts.user_dir }}/.local/bin/konsave -a k9"

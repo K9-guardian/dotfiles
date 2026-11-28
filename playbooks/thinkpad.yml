@@ -17,6 +17,7 @@
     - { role: fzf, tags: fzf }
     - { role: cargo, tags: cargo }
     - { role: kitty, tags: kitty }
+    - { role: kde, tags: kde }
     - { role: zathura, tags: zathura }
     - { role: inkscape, tags: inkscape }
     - { role: oriedita, tags: oriedita }
