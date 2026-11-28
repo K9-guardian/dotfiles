@@ -11,5 +11,4 @@
     archive_install_dir: "{{ ctags_install_dir }}"
     archive_extra_opts:
       - "--strip-components=1"
-    archive_binary_subpath: "bin/ctags"
     archive_symlink_name: "ctags"
