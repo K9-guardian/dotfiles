@@ -1,2 +1,35 @@
-# I can install from github tarball.
-# Settings can be imported/exported from a binary, so I guess I store that in VCS.
+- name: Get latest Oriedita information
+  include_tasks: "../../dotfiles-core/tasks/github_release_asset.yml"
+  vars:
+    github_repo: "oriedita/oriedita"
+
+- name: Install Oriedita from archive
+  include_tasks: "../../dotfiles-core/tasks/install_archive.yml"
+  vars:
+    archive_app_name: Oriedita
+    archive_url: "{{ _gh_download_url }}"
+    archive_install_dir: "{{ oriedita_install_dest }}"
+    archive_binary_subpath: "Oriedita/bin/Oriedita"
+    archive_symlink_name: "oriedita"
+
+- name: Copy Oriedita desktop files
+  ansible.builtin.template:
+    src: "oriedita.desktop.j2"
+    dest: "~/.local/share/applications/oriedita.desktop"
+    mode: '644'
+
+- name: Ensure Oriedita configuration directory exists
+  ansible.builtin.file:
+    path: "{{ ansible_facts.user_dir }}/.oriedita"
+    state: directory
+    mode: "0755"
+
+- name: Stow oriedita configuration
+  ansible.builtin.command:
+    cmd: >
+      {{ ansible_facts.user_dir }}/.local/bin/stow --dotfiles --no-folding --adopt {{ stow_extra_args }}
+      --dir={{ role_path }}/files
+      --target={{ ansible_facts.user_dir }}/.oriedita
+      config
+  changed_when: false
+

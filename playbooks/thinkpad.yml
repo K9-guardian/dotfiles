@@ -17,8 +17,9 @@
     - { role: fzf, tags: fzf }
     - { role: cargo, tags: cargo }
     - { role: kitty, tags: kitty }
-    - { role: inkscape, tags: inkscape }
     - { role: zathura, tags: zathura }
+    - { role: inkscape, tags: inkscape }
+    - { role: oriedita, tags: oriedita }
     - { role: cron, tags: cron }
     - { role: croc, tags: croc }
     - { role: rclone, tags: rclone }
